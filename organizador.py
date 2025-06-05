@@ -36,15 +36,19 @@ def organizar_arquivos(pasta):
         if os.path.isfile(caminho_arquivo):
             try:
                 tipo = magic.from_file(caminho_arquivo, mime=True)
+                print(f"Arquivo: {arquivo} - Tipo MIME detectado: {tipo}")  # para debugging
+
                 categoria = None
 
-                for chave in TIPOS:
-                    if tipo.startswith(chave):
-                        categoria = TIPOS[chave]
-                        break
-
-                if not categoria and tipo in TIPOS:
+                # Primeiro tenta encontrar tipo MIME exato
+                if tipo in TIPOS:
                     categoria = TIPOS[tipo]
+                else:
+                    # Se não encontrou, tenta pelos prefixos
+                    for chave in ["image", "video", "text"]:
+                        if tipo.startswith(chave):
+                            categoria = TIPOS.get(chave)
+                            break
 
                 if categoria:
                     destino = os.path.join(pasta, categoria)
