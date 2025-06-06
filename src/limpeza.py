@@ -39,7 +39,7 @@ def gerar_relatorio(duplicatas, caminho_saida="relatorio.csv"):
     df.to_csv(caminho_saida, index=False)
     print(f"Relatório gerado: {caminho_saida}")
 
-def executar_limpeza_geral(pasta="pasta_exemplo"):
+def executar_limpeza_geral(pasta="arquivos"):
     """Executa o processo completo de limpeza e geração de relatório."""
     print("🔎 Buscando arquivos duplicados...")
     duplicatas = encontrar_duplicatas(pasta)
