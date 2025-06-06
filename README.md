@@ -42,4 +42,4 @@ CleanFolder é um software em Python que organiza automaticamente os arquivos de
 3. Execute o script:
  ```bash
    pipenv run python organizador.py 
-   pipenv run python limpeza.py
+   pipenv run python src\limpeza.py
